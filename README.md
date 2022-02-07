@@ -1,1 +1,1 @@
-ref
+docker-compose up -d

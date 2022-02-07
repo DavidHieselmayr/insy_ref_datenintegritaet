@@ -2,20 +2,6 @@
 # define length, check, FOREIGN KEY, Delete, update, insert
 
 
-## Semantische Integrität
-drop table Student;
-create table Student
-(
-    id   int(30),
-    name int
-);
-describe Student;
-
-insert into Student(id, name)
-VALUES (1, 'test');
-
-select * from Student;
-
 # Entitätenintegrität
 select *
 from Customer;
