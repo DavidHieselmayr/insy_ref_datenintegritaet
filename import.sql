@@ -2,6 +2,20 @@
 # define length, check, FOREIGN KEY, Delete, update, insert
 
 
+## Semantische Integrität
+drop table Student;
+create table Student
+(
+    id   int(30),
+    name int
+);
+describe Student;
+
+insert into Student(id, name)
+VALUES (1, 'test');
+
+select * from Student;
+
 # Entitätenintegrität
 select *
 from Customer;
@@ -120,9 +134,9 @@ from Person;
 #FOREIGN KEY
 CREATE TABLE OrderPerson
 (
-    OrderPersonID  int         NOT NULL PRIMARY KEY,
-    name     varchar(40) not null,
-    personId Int,
+    OrderPersonID int         NOT NULL PRIMARY KEY,
+    name          varchar(40) not null,
+    personId      Int,
     CONSTRAINT person_fk foreign key (personId) references Person (id)
 );
 
@@ -140,7 +154,7 @@ from OrderPerson O
 
 
 
-# Referentielle Integrität
+## Referentielle Integrität
 
 # passt
 DELETE
@@ -159,7 +173,4 @@ where ID = 1;
 UPDATE Person
 set FirstName='Wieselmayr'
 where ID = 1;
-
-
-# Prozedurale Datenintegrität (Views, Trigger und gespeicherte Prozeduren)
-
+;
