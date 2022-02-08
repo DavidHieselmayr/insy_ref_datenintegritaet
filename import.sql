@@ -12,8 +12,8 @@ drop table Customer;
 create table Customer
 (
     ID        int,
-    LastName  varchar,
-    FirstName varchar,
+    LastName  varchar(50),
+    FirstName varchar(20),
     Age       int
 );
 
@@ -25,8 +25,8 @@ VALUES (null, null, null, null);
 create table Customer
 (
     ID        int unique,
-    LastName  varchar,
-    FirstName varchar,
+    LastName  varchar(50),
+    FirstName varchar(20),
     Age       int
 );
 
@@ -59,17 +59,19 @@ drop table Customer;
 create table Customer
 (
     ID        int primary key auto_increment,
-    LastName  varchar,
-    FirstName varchar,
+    LastName  varchar(50),
+    FirstName varchar(40),
     Age       int
 );
 
 insert into Customer(LastName, FirstName, Age)
 values ('Dieselmayr', 'David', 10);
 insert into Customer(LastName, FirstName, Age)
-values ('Benzinmayer', 'David', 21);
+values ('Benzinmayr', 'David', 21);
 insert into Customer(LastName, FirstName, Age)
 values ('Emayer', 'David', 22);
+
+select * from Customer;
 
 
 # Domänenintegrität
@@ -85,7 +87,7 @@ CREATE TABLE Person
 );
 
 describe Person;
-
+select * from Person;
 insert into Person(LastName, FirstName, Age)
 VALUES ('Gruber', 'Hans', 2);
 insert into Person(LastName, FirstName, Age, City)
@@ -98,6 +100,7 @@ alter table Person
 
 # check constraint
 drop table Person;
+describe Person;
 CREATE TABLE Person
 (
     ID        int primary key auto_increment,
@@ -108,8 +111,10 @@ CREATE TABLE Person
     check ( Age >= 18)
 );
 
-insert into Person(LastName, FirstName, Age)
+# Fail
+insert into Person(Person.LastName, Person.FirstName, Age)
 values ('Linsenmayr', 'David', 17);
+
 insert into Person(LastName, FirstName, Age)
 values ('Linsenmayr', 'David', 18);
 
@@ -118,6 +123,7 @@ from Person;
 
 
 #FOREIGN KEY
+drop table OrderPerson;
 CREATE TABLE OrderPerson
 (
     OrderPersonID int         NOT NULL PRIMARY KEY,
@@ -146,8 +152,9 @@ from OrderPerson O
 DELETE
 From OrderPerson
 where OrderPersonID = 1;
-select *
-from OrderPerson;
+
+select * from OrderPerson;
+
 insert into OrderPerson(OrderPersonID, name, personId)
 values (1, 'LKW', 1);
 
